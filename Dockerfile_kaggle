@@ -1,0 +1,10 @@
+FROM python:3.8
+# Set the working directory in the container to /app
+WORKDIR /app
+# Copy the current directory contents into the container at /app
+COPY . /app
+RUN pip install kaggle
+RUN mkdir -p ~/.kaggle/ && mv kaggle.json ~/.kaggle/ && chmod 600 ~/.kaggle/kaggle.json
+RUN kaggle datasets download "ghrzarea/movielens-20m-posters-for-machine-learning"
+RUN apt install unzip
+RUN unzip movielens-20m-posters-for-machine-learning.zip

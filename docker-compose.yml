@@ -1,0 +1,26 @@
+version: '3.8' # specify docker-compose version
+services: # services to run
+  kaggle:
+    build:
+      context: . # specify the directory of the Dockerfile_kaggle
+      dockerfile: Dockerfile_kaggle # specify the Dockerfile_kaggle name
+
+
+  api: # name of the first service
+    build:
+      context: . # specify the directory of the Dockerfile_kaggle
+      dockerfile: Dockerfile_api # specify the Dockerfile_kaggle name
+    ports:
+      - "5000:5000" # specify port mapping
+    depends_on:
+      - kaggle # specify service dependencies
+
+  gradio-app:
+    build:
+      context: . # specify the directory of the Dockerfile_kaggle
+      dockerfile: Dockerfile_webapp # specify the Dockerfile_kaggle name
+    ports:
+      - "7860:7860" # specify port mapping
+    depends_on:
+      - kaggle
+

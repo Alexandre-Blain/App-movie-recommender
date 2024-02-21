@@ -1,0 +1,14 @@
+annoy
+flask
+pandas
+nltk
+numpy
+gensim
+wget
+scikit-learn
+gradio
+Pillow
+requests
+torch
+torchvision
+torchtext
